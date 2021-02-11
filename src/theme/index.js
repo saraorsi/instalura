@@ -43,4 +43,5 @@ export const colors = {
     colors,
     borderRadius: '8px',
     transition: '200ms ease-in-out',
+    fontFamily: '\'Rubik\', sans-serif',
   }; 
