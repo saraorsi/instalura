@@ -4,12 +4,17 @@ import { Button } from '../src/components/commons/Button'
 import { Text } from '../src/components/foundation/Text'
 import { Grid } from '../src/components/foundation/layout/Grid'
 import { Box } from '../src/components/foundation/layout/Box'
+import { useState } from 'react'
+import Modal from '../src/components/commons/Modal'
 
 
 
 export default function Home() {
+
+  const [isModalOpen, setModalState] = useState(false)
+
   return (
-    <Box 
+    <Box
       flex='1'
       display='flex'
       flexWrap='wrap'
@@ -19,13 +24,33 @@ export default function Home() {
       backgroundRepeat='no-repeat'
       backgroundPosition='bottom right'
     >
+      {isModalOpen &&
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setModalState(false)
+          }}>
+          {
+            (propsDoModal) => (
+              <Box
+                backgroundColor="white"
+                {...propsDoModal}
+              >
+                <div>
+                  O nosso conteudo
+            </div>
+              </Box>
+            )
+          }
+        </Modal>
+      }
       <Menu />
 
       <Grid.Container
-          marginTop={{
-            xs: '32px',
-            md: '75px'
-          }}
+        marginTop={{
+          xs: '32px',
+          md: '75px'
+        }}
       >
         <Grid.Row>
           <Grid.Col
@@ -36,7 +61,7 @@ export default function Home() {
               alignItems: 'flex-start',
               justifyContent: 'center',
               flexDirection: 'column',
-            }} 
+            }}
           >
             <Text
               variant="title"
@@ -69,6 +94,7 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => setModalState(!isModalOpen)}
             >
               Cadastrar
         </Button>
@@ -86,11 +112,6 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-
-
-
-
       <Footer />
     </Box>
   )
