@@ -24,7 +24,7 @@ export default function Home() {
       backgroundRepeat='no-repeat'
       backgroundPosition='bottom right'
     >
-      {isModalOpen &&
+  
         <Modal
           isOpen={isModalOpen}
           onClose={() => {
@@ -43,7 +43,7 @@ export default function Home() {
             )
           }
         </Modal>
-      }
+    
       <Menu />
 
       <Grid.Container
